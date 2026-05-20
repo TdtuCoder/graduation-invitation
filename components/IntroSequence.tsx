@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect } from 'react';
 
@@ -11,13 +11,13 @@ interface IntroSequenceProps {
 export default function IntroSequence({ onComplete }: IntroSequenceProps) {
     const images = ['/next.svg', '/vercel.svg', '/file.svg'];
 
-    const containerVariants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 1 },
         visible: { opacity: 1 },
         exit: {
             opacity: 0,
             scale: 1.1, // Hơi zoom lên một chút rồi mờ đi trước khi vào thiệp
-            transition: { duration: 0.8, ease: "easeInOut" },
+            transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
         },
     };
 
@@ -25,7 +25,7 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
     const cardDelay = 0.4; // Kéo dài độ trễ một chút để xem rõ từng ảnh bay vào
     const duration = 1.6;  // Animation dài hơn để tạo cảm giác "trải dần" chậm rãi
 
-    const cardVariants = {
+    const cardVariants: Variants = {
         hidden: {
             opacity: 0,
             scale: 0.3,     // Bắt đầu từ nhỏ (từ trong), sẽ to ra ngoài
