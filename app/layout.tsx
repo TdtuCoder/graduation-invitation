@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, Great_Vibes } from "next/font/google";
+import StarryBackground from "@/components/StarryBackground";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -28,7 +29,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi" className={`${inter.variable} ${cormorant.variable} ${greatVibes.variable}`}>
-      <body className="font-sans antialiased text-stone-800 bg-[#fcfbf9] app-full-height">
+      <body className="font-sans antialiased text-foreground bg-background app-full-height">
+        <StarryBackground />
         {children}
       </body>
     </html>

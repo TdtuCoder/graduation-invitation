@@ -39,7 +39,7 @@ export default function CollageLayout() {
 
         {/* Góc trên phải */}
         <div className="relative w-full aspect-[9/16] sm:aspect-[3/4] overflow-hidden rounded-tr-xl">
-          <img src="/anh1.jpg" alt="Top Right" className="w-full h-full object-cover" />
+          <img src="/top-right.png" alt="Top Right" className="w-full h-full object-contain" />
         </div>
 
         {/* Góc dưới trái */}
@@ -49,13 +49,26 @@ export default function CollageLayout() {
 
         {/* Góc dưới phải */}
         <div className="relative w-full aspect-[9/16] sm:aspect-[3/4] overflow-hidden rounded-br-xl">
-          <img src="/anh1.jpg" alt="Bottom Right" className="w-full h-full object-cover" />
+          <video
+            src="/video1.mp4"
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
         </div>
 
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+        <div className="absolute top-1/2 left-0 z-20 w-[300px] sm:w-[390px] -translate-y-1/2">
 
-          <div className="relative w-[240px] h-[150px] sm:w-[280px] sm:h-[180px] bg-[#2a2a2a] rounded-lg p-2 sm:p-3 shadow-2xl rotate-[3deg]">
-            <div className="w-full h-full bg-black relative rounded flex items-center justify-center overflow-hidden">
+          <div className="relative aspect-[520/479] w-full drop-shadow-2xl">
+            <img
+              src="/camera.png"
+              alt="Camera frame"
+              className="relative z-20 h-full w-full object-contain"
+            />
+
+            <div className="absolute left-[37.5%] top-[27%] z-30 h-[32.5%] w-[55%] overflow-hidden rounded-[3px] bg-black">
               <Slideshow />
             </div>
 
@@ -69,7 +82,7 @@ export default function CollageLayout() {
             <img
               src="/flower.png"
               alt="flower"
-              className="absolute -top-6 -left-6 sm:-top-8 sm:-left-8 w-12 h-12 sm:w-16 sm:h-16 rotate-[-15deg] z-30"
+              className="absolute -top-4 left-[28%] z-40 h-12 w-12 rotate-[-15deg] sm:-top-6 sm:h-16 sm:w-16"
             />
           </div>
         </div>
