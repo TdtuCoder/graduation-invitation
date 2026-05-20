@@ -124,3 +124,34 @@ html, body, #__next {
 
 /* Make sure main content sits above the grid */
 .content-above-grid { position: relative; z-index: 10; }
+
+.paper-invite-typewriter {
+  animation:
+    paper-invite-type 4.5s steps(45, end) infinite,
+    paper-invite-caret 0.75s step-end infinite;
+  border-right: 2px solid rgba(190, 18, 60, 0.85);
+  font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+  overflow: hidden;
+  text-shadow: 0 2px 0 rgba(236, 72, 153, 0.45), 0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+@keyframes paper-invite-type {
+  0%,
+  12% {
+    max-width: 0;
+  }
+  72%,
+  100% {
+    max-width: 100%;
+  }
+}
+
+@keyframes paper-invite-caret {
+  0%,
+  100% {
+    border-color: rgba(190, 18, 60, 0.85);
+  }
+  50% {
+    border-color: transparent;
+  }
+}
