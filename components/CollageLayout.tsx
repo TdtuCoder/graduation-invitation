@@ -46,11 +46,16 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
         if (width === 0 || height === 0) continue;
         
         const isDesktop = window.innerWidth >= 640;
-        const baseW = isDesktop ? 672 : 360;
-        const baseH = isDesktop ? 885 : 640;
+        if (!isDesktop) {
+          setScale(1);
+          continue;
+        }
+
+        const baseW = 672;
+        const baseH = 885;
         
-        const paddingX = framed ? 0 : (isDesktop ? 32 : 0);
-        const paddingY = framed ? 0 : (isDesktop ? 64 : 32);
+        const paddingX = framed ? 0 : 32;
+        const paddingY = framed ? 0 : 64;
         
         const availableW = Math.max(0, width - paddingX);
         const availableH = Math.max(0, height - paddingY);
@@ -58,7 +63,7 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
         const scaleX = availableW / baseW;
         const scaleY = availableH / baseH;
         
-        setScale(Math.min(scaleX, scaleY, isDesktop ? 1.2 : 2)); 
+        setScale(Math.min(scaleX, scaleY, 1.2)); 
       }
     });
     
@@ -89,9 +94,9 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
           opacity: isMounted ? 1 : 0
         }}
       >
-        <div className="relative w-[360px] sm:w-[672px] shrink-0">
+        <div className="absolute inset-0 w-full h-full sm:relative sm:inset-auto sm:w-[672px] sm:h-auto shrink-0">
           {/* Desktop: faux wooden frame via theme tokens. Mobile: no frame, just shadow. */}
-        <div className="shadow-2xl sm:shadow-none">
+        <div className="absolute inset-0 sm:relative sm:inset-auto h-full sm:h-auto shadow-2xl sm:shadow-none">
           <div className="hidden sm:block rounded-[28px] p-[10px] bg-gradient-to-br from-amber-950/70 via-amber-800/55 to-yellow-950/60 shadow-2xl">
             <div className="rounded-[22px] bg-black/15 p-[6px]">
               <div className="relative grid grid-cols-2 overflow-hidden rounded-[18px]">
@@ -223,10 +228,10 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
         </div>
 
         {/* Mobile/Small: no wood frame, just the content itself */}
-        <div className="sm:hidden">
-          <div className="relative grid grid-cols-2 overflow-hidden rounded-xl">
+        <div className="sm:hidden absolute inset-0">
+          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 overflow-hidden">
             {/* Góc trên trái */}
-            <div className="relative w-full aspect-[9/16] overflow-hidden rounded-tl-xl">
+            <div className="relative w-full h-full overflow-hidden">
               <img
                 src="/anh1.jpg"
                 alt="Top Left"
@@ -235,7 +240,7 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
             </div>
 
             {/* Góc trên phải */}
-            <div className="relative w-full aspect-[9/16] overflow-hidden rounded-tr-xl">
+            <div className="relative w-full h-full overflow-hidden">
               <img
                 src="/anh2.jpg"
                 alt="Top Right"
@@ -244,7 +249,7 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
             </div>
 
             {/* Góc dưới trái */}
-            <div className="relative w-full aspect-[9/16] overflow-hidden rounded-bl-xl">
+            <div className="relative w-full h-full overflow-hidden">
               <img
                 src="/anh1.jpg"
                 alt="Bottom Left"
@@ -253,7 +258,7 @@ export default function CollageLayout({ framed = false }: CollageLayoutProps) {
             </div>
 
             {/* Góc dưới phải */}
-            <div className="relative w-full aspect-[9/16] overflow-hidden rounded-br-xl">
+            <div className="relative w-full h-full overflow-hidden">
               <video
                 src="/video2.mp4"
                 className="w-full h-full object-cover object-top"
