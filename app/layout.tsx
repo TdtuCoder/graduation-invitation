@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Great_Vibes } from "next/font/google";
-import StarryBackground from "@/components/StarryBackground";
+import { Inter, Cormorant_Garamond, Great_Vibes, Fredoka, Patrick_Hand } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
+  subsets: ["latin", "vietnamese"],
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-cormorant",
 });
@@ -15,6 +14,18 @@ const greatVibes = Great_Vibes({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-great-vibes",
+});
+
+const bubbleCute = Fredoka({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-bubble-cute",
+});
+
+const patrickHand = Patrick_Hand({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400"],
+  variable: "--font-patrick-hand",
 });
 
 export const metadata: Metadata = {
@@ -28,9 +39,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className={`${inter.variable} ${cormorant.variable} ${greatVibes.variable}`}>
+    <html
+      lang="vi"
+      className={`${inter.variable} ${cormorant.variable} ${greatVibes.variable} ${bubbleCute.variable} ${patrickHand.variable}`}
+    >
       <body className="font-sans antialiased text-foreground bg-background app-full-height">
-        <StarryBackground />
         {children}
       </body>
     </html>

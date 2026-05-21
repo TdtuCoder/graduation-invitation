@@ -10,7 +10,7 @@ interface IntroSequenceProps {
 }
 
 export default function IntroSequence({ onComplete }: IntroSequenceProps) {
-    const images = ['/test.jpg', '/background.jpg'];
+    const images = ['/test.jpg', '/background.png'];
     const collageIndex = images.length;
 
     const containerVariants: Variants = {
@@ -114,7 +114,7 @@ export default function IntroSequence({ onComplete }: IntroSequenceProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-black"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden"
             style={{ perspective: 1500 }}
         >
             <motion.div

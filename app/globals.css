@@ -11,6 +11,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-bubble: var(--font-bubble-cute);
+  --font-handwriting: var(--font-patrick-hand);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,9 +23,26 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: url('/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* keep the table visible behind the centered frame */
+  background-position: center 72%;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.table-bg {
+  background-image: url('/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* keep the table visible behind the centered frame */
+  background-position: center 72%;
+}
+
+.font-bubble {
+  font-family: var(--font-bubble-cute), "Comic Sans MS", "Trebuchet MS", ui-rounded, system-ui, cursive;
 }
 
 /* Make app root take full dynamic viewport height on modern browsers with a fallback */
@@ -130,9 +149,58 @@ html, body, #__next {
     paper-invite-type 4.5s steps(45, end) infinite,
     paper-invite-caret 0.75s step-end infinite;
   border-right: 2px solid rgba(190, 18, 60, 0.85);
-  font-family: "Comic Sans MS", "Trebuchet MS", cursive;
+  font-family: var(--font-bubble-cute), var(--font-cormorant), ui-rounded, system-ui, sans-serif;
+  font-style: italic;
+  letter-spacing: 0.01em;
   overflow: hidden;
   text-shadow: 0 2px 0 rgba(236, 72, 153, 0.45), 0 4px 10px rgba(0, 0, 0, 0.22);
+}
+
+.paper-invite-note {
+  font-family: var(--font-patrick-hand), var(--font-cormorant), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-style: normal;
+  letter-spacing: 0.015em;
+  color: #1f1f1f; /* Darker text color (almost charcoal/ink color) */
+  text-shadow: none; /* Removed the glowing pink shadows for clean handwriting look */
+  line-height: 1.35;
+}
+
+@keyframes banner-text-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.01); }
+}
+
+.banner-text-float {
+  animation: banner-text-float 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+.handwritten-dear {
+  font-family: var(--font-great-vibes), var(--font-cormorant), var(--font-bubble-cute), ui-serif, serif;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--color-foreground) 14%, black);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  font-size: 22px;
+}
+
+@media (min-width: 640px) {
+  .handwritten-dear { font-size: 28px; }
+}
+
+.handwritten-write {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0.16em 0.04em;
+  clip-path: inset(-0.28em 100% -0.28em 0);
+  animation: handwriting-reveal 1.65s ease-out both;
+  will-change: clip-path;
+}
+
+@keyframes handwriting-reveal {
+  to { clip-path: inset(-0.28em 0 -0.28em 0); }
 }
 
 @keyframes paper-invite-type {

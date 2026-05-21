@@ -14,5 +14,5 @@ export default async function InvitationPage({ params }: PageProps) {
     notFound();
   }
 
-  return <InvitationContainer />;
+  return <InvitationContainer dearName={guest.name} />;
 }
