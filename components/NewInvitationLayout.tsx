@@ -48,13 +48,22 @@ export default function NewInvitationLayout({
           </span>
         </div>
 
-        {/* 2. TITLE (Graduation Ceremony Image) */}
-        <div className="relative flex flex-col items-center mt-4 z-10 select-none w-full px-6">
-          <img
-            src="/graduation.png"
-            alt="Graduation Ceremony"
-            className="w-full max-w-[400px] h-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:scale-102"
-          />
+        {/* 2. TITLE (Graduation Ceremony Text with Cap and Effects) */}
+        <div className="relative flex flex-col items-center mt-8 mb-2 z-10 select-none w-full px-2 text-center" style={{ fontFamily: "var(--font-great-vibes)" }}>
+          <div className="relative inline-block">
+            <span className="relative z-10 text-[85px] sm:text-[76px] leading-none text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.45)]">
+              Graduation
+            </span>
+            {/* Graduation Cap */}
+            <img 
+              src="/graduation-cap.png" 
+              alt="Graduation Cap" 
+              className="absolute -top-[25px] -left-[10px] w-[65px] sm:w-[75px] h-auto -rotate-[10deg] drop-shadow-md pointer-events-none z-20 animate-[bounce_1s_ease-in-out_infinite]"
+            />
+          </div>
+          <span className="inline-block pt-4 pb-2 px-2 text-[56px] sm:text-[64px] leading-none bg-gradient-to-b from-white from-[25%] via-[#E2C799] via-[65%] to-[#a88648] bg-clip-text text-transparent drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)] -mt-6">
+            Ceremony
+          </span>
         </div>
 
         {/* 3. MIDDLE AREA (Kept empty/spaced to show the face of the graduate in background_new.jpg) */}
@@ -82,7 +91,7 @@ export default function NewInvitationLayout({
             >
               Thân mời
             </span>
-            <div className="relative my-2">
+            <div className="relative mb-2 mt-1">
               <span
                 className="text-[#a88648] text-[34px] px-4 font-normal inline-block border-b border-[#a88648]/40 pb-1"
                 style={{ fontFamily: "var(--font-great-vibes)" }}
@@ -198,12 +207,18 @@ export default function NewInvitationLayout({
             </div>
 
             {/* 5. THANK YOU PARAGRAPH */}
-            <div className="w-full text-center px-3 border-t border-[#4a433a]/10 pt-3 select-none z-10">
+            <div className="w-full text-center px-3 border-t border-[#4a433a]/10 pt-3 select-none z-10 min-h-[80px]">
             <p 
               className="text-[14px] text-[#4a433a]/90 leading-relaxed font-medium"
               style={{ fontFamily: '"Times New Roman", Times, serif' }}
             >
-              Sự hiện diện của anh chị bạn chính là niềm vinh dự lớn lao và là kỷ niệm quý giá đối với Diệu. Xin chân thành cảm ơn vì đã đồng hành, chia sẻ và ủng hộ Diệu trong hành trình vừa qua!
+              <Typewriter 
+                text="Sự hiện diện của anh chị bạn chính là niềm vinh dự lớn lao và là kỷ niệm quý giá đối với Diệu. Xin chân thành cảm ơn vì đã đồng hành, chia sẻ và ủng hộ Diệu trong hành trình vừa qua!"
+                speed={30}
+                delay={1000}
+                loop={false}
+                showCursor={true}
+              />
             </p>
 
           </div>

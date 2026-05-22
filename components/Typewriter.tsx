@@ -10,6 +10,8 @@ interface TypewriterProps {
   pauseDelay?: number;  // pause duration when text is fully typed
   deleteDelay?: number; // pause duration when text is fully deleted
   className?: string;
+  loop?: boolean;       // whether to loop (delete and re-type)
+  showCursor?: boolean; // whether to show a blinking cursor
 }
 
 export default function Typewriter({
@@ -20,6 +22,8 @@ export default function Typewriter({
   pauseDelay = 2000,
   deleteDelay = 500,
   className,
+  loop = true,
+  showCursor = false,
 }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -40,9 +44,11 @@ export default function Typewriter({
         }, currentSpeed);
       } else {
         // Text is fully typed, pause before deleting
-        timer = setTimeout(() => {
-          setIsDeleting(true);
-        }, pauseDelay);
+        if (loop) {
+          timer = setTimeout(() => {
+            setIsDeleting(true);
+          }, pauseDelay);
+        }
       }
     } else {
       // Deleting backward
@@ -53,14 +59,26 @@ export default function Typewriter({
         }, deleteSpeed);
       } else {
         // Text is fully deleted, pause before starting the next typing cycle
-        timer = setTimeout(() => {
-          setIsDeleting(false);
-        }, deleteDelay);
+        if (loop) {
+          timer = setTimeout(() => {
+            setIsDeleting(false);
+          }, deleteDelay);
+        }
       }
     }
 
     return () => clearTimeout(timer);
-  }, [text, index, isDeleting, speed, deleteSpeed, delay, pauseDelay, deleteDelay]);
+  }, [text, index, isDeleting, speed, deleteSpeed, delay, pauseDelay, deleteDelay, loop]);
 
-  return <span className={className}>{displayedText || "\u00A0"}</span>;
+  return (
+    <span className={className}>
+      {displayedText || "\u00A0"}
+      {showCursor && (
+        <span 
+          className="inline-block w-[2px] h-[1em] bg-current ml-[2px] align-middle" 
+          style={{ animation: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite" }}
+        />
+      )}
+    </span>
+  );
 }

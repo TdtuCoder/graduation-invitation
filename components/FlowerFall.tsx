@@ -49,8 +49,8 @@ export default function FlowerFall({
     let height = 0;
     let dpr = 1;
 
-    let petalWhite = "rgba(255, 255, 255, 0.85)";
-    let petalPink = "rgba(251, 207, 232, 0.85)";
+    const petalWhite = "rgba(255, 255, 255, 0.85)";
+    const petalPink = "rgba(251, 207, 232, 0.85)";
 
     let lastT = 0;
 
