@@ -52,9 +52,13 @@ export default function NewInvitationLayout({
       {/* Main card matching the mobile phone layout */}
       <div
         ref={cardRef}
-        className="relative w-full max-w-[440px] flex-1 min-h-[640px] max-h-[920px] my-auto sm:rounded-[36px] shadow-[0_24px_50px_rgba(0,0,0,0.55)] overflow-hidden flex flex-col justify-between pt-6 sm:pt-8 pb-0 text-neutral-800 bg-cover bg-center z-10 shrink-0"
-        style={{ backgroundImage: "url('/background_new_v2.jpg')" }}
+        className="relative w-full max-w-[440px] flex-1 min-h-[640px] max-h-[920px] my-auto sm:rounded-[36px] shadow-[0_24px_50px_rgba(0,0,0,0.55)] overflow-hidden flex flex-col justify-between pt-6 sm:pt-8 pb-0 text-neutral-800 z-10 shrink-0 bg-neutral-950"
       >
+        <img 
+          src="/background_new_v2.jpg" 
+          alt="" 
+          className="absolute inset-0 w-full h-full object-cover z-[-1] pointer-events-none" 
+        />
         {/* Top Overlay Gradient to darken top text slightly for legibility */}
         <div className="absolute top-0 left-0 right-0 h-44 bg-gradient-to-b from-black/40 to-transparent pointer-events-none z-0" />
 
@@ -144,7 +148,7 @@ export default function NewInvitationLayout({
               {/* Column 1: Thời gian */}
               <div className="flex flex-col items-center flex-1 py-1">
                 <div
-                  className="border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
+                  className="whitespace-nowrap border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
                   style={{ fontFamily: '"Times New Roman", Times, serif' }}
                 >
                   Thời gian
@@ -193,7 +197,7 @@ export default function NewInvitationLayout({
               {/* Column 2: Địa điểm */}
               <div className="flex flex-col items-center flex-[1.4] py-1 px-1">
                 <div
-                  className="border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
+                  className="whitespace-nowrap border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
                   style={{ fontFamily: '"Times New Roman", Times, serif' }}
                 >
                   Địa điểm
@@ -232,7 +236,7 @@ export default function NewInvitationLayout({
               {/* Column 3: Liên hệ */}
               <div className="flex flex-col items-center flex-1 py-1">
                 <div
-                  className="border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
+                  className="whitespace-nowrap border border-[#856a47]/40 rounded-full px-3 min-[390px]:max-sm:px-5 py-1 text-[12px] min-[390px]:max-sm:text-[14px] sm:text-[13px] font-bold bg-gradient-to-r from-[#1a120b] via-[#856a47] to-[#1a120b] bg-clip-text text-transparent tracking-wider"
                   style={{ fontFamily: '"Times New Roman", Times, serif' }}
                 >
                   Liên hệ
@@ -258,10 +262,10 @@ export default function NewInvitationLayout({
                 style={{ fontFamily: '"Times New Roman", Times, serif' }}
               >
                 {isDownloading ? (
-                  "Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!."
+                  "Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
                 ) : (
                   <Typewriter
-                    text="Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!."
+                    text="Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
                     speed={30}
                     delay={1000}
                     loop={false}
