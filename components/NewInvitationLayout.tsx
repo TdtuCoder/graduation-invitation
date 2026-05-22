@@ -2,8 +2,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useRef, useCallback, useState } from "react";
-import { toJpeg } from "html-to-image";
 import Typewriter from "./Typewriter";
 
 interface NewInvitationLayoutProps {
@@ -13,34 +11,6 @@ interface NewInvitationLayoutProps {
 export default function NewInvitationLayout({
   dearName,
 }: NewInvitationLayoutProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  const handleDownload = useCallback(() => {
-    if (cardRef.current === null) {
-      return;
-    }
-    
-    setIsDownloading(true);
-    
-    // Give React a moment to render static text and hide the download button
-    setTimeout(() => {
-      toJpeg(cardRef.current!, { quality: 0.95, cacheBust: true })
-        .then((dataUrl) => {
-          const link = document.createElement("a");
-          link.download = "Thiep_Moi_Huyen_Dieu.jpg";
-          link.href = dataUrl;
-          link.click();
-        })
-        .catch((err) => {
-          console.error("Oops, something went wrong!", err);
-        })
-        .finally(() => {
-          setIsDownloading(false);
-        });
-    }, 150);
-  }, [cardRef]);
-
   return (
     <div
       className="w-full min-h-[100dvh] flex flex-col justify-start items-center bg-neutral-950 bg-cover bg-center p-0 sm:p-4 overflow-y-auto overflow-x-hidden"
@@ -51,7 +21,6 @@ export default function NewInvitationLayout({
 
       {/* Main card matching the mobile phone layout */}
       <div
-        ref={cardRef}
         className="relative w-full max-w-[440px] flex-1 min-h-[640px] max-h-[920px] my-auto sm:rounded-[36px] shadow-[0_24px_50px_rgba(0,0,0,0.55)] overflow-hidden flex flex-col justify-between pt-6 sm:pt-8 pb-0 text-neutral-800 z-10 shrink-0 bg-neutral-950"
       >
         <img 
@@ -129,18 +98,14 @@ export default function NewInvitationLayout({
             </span>
             <div className="relative mb-2 mt-1">
               <span
-                className={`text-[26px] min-[390px]:max-sm:text-[34px] px-4 font-normal inline-block border-b border-[#2E3D30]/40 pb-1 ${isDownloading ? 'text-[#2E3D30]' : 'bg-gradient-to-r from-[#1c261e] via-[#2E3D30] to-[#1c261e] bg-clip-text text-transparent'}`}
+                className="bg-gradient-to-r from-[#1c261e] via-[#2E3D30] to-[#1c261e] bg-clip-text text-transparent text-[26px] min-[390px]:max-sm:text-[34px] px-4 font-normal inline-block border-b border-[#2E3D30]/40 pb-1"
                 style={{ fontFamily: "var(--font-great-vibes)" }}
               >
-                {isDownloading ? (
-                  dearName || "anh/chị/em/bạn bè"
-                ) : (
-                  <Typewriter
-                    text={dearName || "anh/chị/em/bạn bè"}
-                    delay={1400}
-                    speed={70}
-                  />
-                )}
+                <Typewriter
+                  text={dearName || "anh/chị/em/bạn bè"}
+                  delay={1400}
+                  speed={70}
+                />
               </span>
             </div>
             {/* 3 Columns Section (Thời gian, Địa điểm, Liên hệ) */}
@@ -261,29 +226,13 @@ export default function NewInvitationLayout({
                 className="text-[10px] min-[390px]:max-sm:text-[12px] text-[#4a433a]/90 leading-relaxed font-medium"
                 style={{ fontFamily: '"Times New Roman", Times, serif' }}
               >
-                {isDownloading ? (
-                  "Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
-                ) : (
-                  <Typewriter
-                    text="Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
-                    speed={30}
-                    delay={1000}
-                    loop={false}
-                    showCursor={false}
-                  />
-                )}
-                {!isDownloading && (
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 4.5, duration: 1 }}
-                  >
-                    {" "}
-                    <span onClick={handleDownload} className="text-[#856a47] hover:text-[#5c4830] transition-colors cursor-pointer">
-                      Tải thiệp <span className="underline underline-offset-2 decoration-[#856a47]">TẠI ĐÂY</span>
-                    </span>
-                  </motion.span>
-                )}
+                <Typewriter
+                  text="Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
+                  speed={30}
+                  delay={1000}
+                  loop={false}
+                  showCursor={false}
+                />
               </p>
             </div>
           </div>
