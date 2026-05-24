@@ -227,7 +227,7 @@ export default function NewInvitationLayout({
                 style={{ fontFamily: '"Times New Roman", Times, serif' }}
               >
                 <Typewriter
-                  text="Một cột mốc nhỏ nhưng đầy ý nghĩa của Huyền Dịu. Rất mong có bạn đến chung vui trong ngày đặc biệt này!"
+                  text="Một cột mốc nhỏ nhưng đầy ý nghĩa của con. Dạ con rất mong cô chú đến chung vui trong ngày đặc biệt này ạ!"
                   speed={30}
                   delay={1000}
                   loop={false}
